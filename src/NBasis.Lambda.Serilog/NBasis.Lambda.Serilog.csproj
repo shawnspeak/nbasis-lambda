@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Product>NBasis.Lambda.Serilog</Product>
+    <Title>NBasis.Lambda.Serilog</Title>
+    <RootNamespace>NBasis.Lambda.Serilog</RootNamespace>
+    <AssemblyName>NBasis.Lambda.Serilog</AssemblyName>
+    <Version>0.0.0</Version>
+    <PackageId>NBasis.Lambda.Serilog</PackageId>
+    <Description>Serilog support for NBasis.Lambda functions</Description>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/shawnspeak/nbasis-lambda</RepositoryUrl>
+    <Authors>Shawn Beach</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core" Version="[2.0,3.0)" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
+  </ItemGroup>
+
+</Project>

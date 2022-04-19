@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Product>NBasis.Lambda</Product>
+    <Title>NBasis.Lambda</Title>
+    <RootNamespace>NBasis.Lambda</RootNamespace>
+    <AssemblyName>NBasis.Lambda</AssemblyName>
+    <Version>0.0.0</Version>
+    <PackageId>NBasis.Lambda</PackageId>
+    <Description>AWS Lambda base classes</Description>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/shawnspeak/nbasis-lambda</RepositoryUrl>
+    <Authors>Shawn Beach</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core" Version="[2.0,3.0)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>
