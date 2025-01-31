@@ -1,11 +1,11 @@
 ﻿using Amazon.Lambda.Core;
 using Microsoft.Extensions.Logging;
-using Serilog;
+using SLogger = Serilog;
 using Serilog.Debugging;
 using Serilog.Extensions.Logging;
 using Serilog.Formatting;
 
-namespace NBasis.Lambda.Logging
+namespace NBasis.Lambda.Serilog
 {
     public class LambdaLoggerFactory : ILoggerFactory
     {
@@ -14,9 +14,10 @@ namespace NBasis.Lambda.Logging
         public const string LogLevelVariable = "LOG_MINIMUM_LEVEL";
 
         readonly SerilogLoggerProvider _provider;
+
         private bool _disposed;
 
-        public LambdaLoggerFactory(Serilog.ILogger logger, bool dispose = false)
+        public LambdaLoggerFactory(SLogger.ILogger logger, bool dispose = false)
         {
             _provider = new SerilogLoggerProvider(logger, dispose);
         }
@@ -34,7 +35,7 @@ namespace NBasis.Lambda.Logging
                 if (disposing)
                 {
                     // force a flush
-                    Serilog.Log.CloseAndFlush();
+                    SLogger.Log.CloseAndFlush();
 
                     _provider.Dispose();
                 }
@@ -53,12 +54,13 @@ namespace NBasis.Lambda.Logging
             SelfLog.WriteLine("Cannot add other logger providers {0}", provider);
         }
 
-        public static LambdaLoggerFactory Build(ILambdaContext context, ITextFormatter textFormatter)
+        public static LambdaLoggerFactory Build(ILambdaContext context, ITextFormatter textFormatter = null)
         {
-            if (context == null) throw new ArgumentNullException(nameof(context));
-            if (textFormatter == null) throw new ArgumentNullException(nameof(textFormatter));
+            ArgumentNullException.ThrowIfNull(context);
 
-            var l = new LoggerConfiguration();
+            textFormatter ??= new SLogger.Formatting.Json.JsonFormatter();
+
+            var l = new SLogger.LoggerConfiguration();
 
             // set minimum level
             string logLevel = Environment.GetEnvironmentVariable(LogLevelVariable);

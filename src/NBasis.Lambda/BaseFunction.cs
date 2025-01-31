@@ -35,7 +35,7 @@ namespace NBasis.Lambda
         {
         }
 
-        protected virtual ILoggerFactory SetupLogging()
+        protected virtual ILoggerFactory SetupLogging(ILambdaContext ctx)
         {
             return null;
         }
@@ -72,7 +72,7 @@ namespace NBasis.Lambda
             if (_hasFirstRun) return;
 
             // setup logging first
-            LoggerFactory = SetupLogging();
+            LoggerFactory = SetupLogging(ctx);
 
             // build configuration
             ConfigurationBuilder builder = new();

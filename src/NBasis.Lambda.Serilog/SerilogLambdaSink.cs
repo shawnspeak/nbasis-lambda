@@ -1,12 +1,12 @@
 ﻿using Amazon.Lambda.Core;
-using Serilog;
+using SLogger = Serilog;
 using Serilog.Configuration;
 using Serilog.Events;
 using Serilog.Formatting;
 
-namespace NBasis.Lambda.Logging
+namespace NBasis.Lambda.Serilog
 {
-    public class SerilogLambdaSink : Serilog.Core.ILogEventSink
+    public class SerilogLambdaSink : SLogger.Core.ILogEventSink
     {
         readonly ILambdaLogger _lambdaLogger;
 
@@ -28,7 +28,7 @@ namespace NBasis.Lambda.Logging
 
     public static class LambdaSinkExtensions
     {
-        public static LoggerConfiguration LambdaLogger(this LoggerSinkConfiguration sinkConfig, ILambdaLogger lambdaLogger, ITextFormatter formatter)
+        public static SLogger.LoggerConfiguration LambdaLogger(this LoggerSinkConfiguration sinkConfig, ILambdaLogger lambdaLogger, ITextFormatter formatter)
         {
             return sinkConfig.Sink(new SerilogLambdaSink(lambdaLogger, formatter));
         }
