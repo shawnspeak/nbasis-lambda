@@ -8,7 +8,8 @@ namespace NBasis.Lambda.RuntimeSupport
     /// </summary>
     public class RuntimeBuilder
     {
-        readonly Dictionary<string, Type> _typeTable = new();
+        readonly Dictionary<string, Type> _typeTable = [];
+
         readonly ILambdaSerializer _serializer;
 
         private RuntimeBuilder(ILambdaSerializer serializer)

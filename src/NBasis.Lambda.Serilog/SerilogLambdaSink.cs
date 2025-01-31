@@ -9,6 +9,7 @@ namespace NBasis.Lambda.Logging
     public class SerilogLambdaSink : Serilog.Core.ILogEventSink
     {
         readonly ILambdaLogger _lambdaLogger;
+
         readonly ITextFormatter _formatter;
 
         public SerilogLambdaSink(ILambdaLogger lambdaLogger, ITextFormatter formatter)

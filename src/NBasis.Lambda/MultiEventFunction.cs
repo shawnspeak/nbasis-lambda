@@ -6,7 +6,8 @@ namespace NBasis.Lambda
 {
     public abstract class MultiEventFunction : BaseFunction
     {
-        readonly Dictionary<Type, Func<string, bool>> _detectorTable = new();
+        readonly Dictionary<Type, Func<string, bool>> _detectorTable = [];
+
         readonly Amazon.Lambda.Core.ILambdaSerializer _serializer;
 
         private MethodInfo _deserializerMethod = null;
@@ -51,12 +52,12 @@ namespace NBasis.Lambda
             else
             {
                 var genericMethod = _deserializerMethod.MakeGenericMethod(evtType);
-                evt = genericMethod.Invoke(_serializer, new object[] { multiEvent.GetStream() });
+                evt = genericMethod.Invoke(_serializer, [multiEvent.GetStream()]);
             }
 
             // handle event
             var handleMethod = handlerType.GetTypeInfo().GetDeclaredMethod("HandleEventAsync");
-            await (Task)handleMethod.Invoke(eventHandler, new object[] { evt, ctx });
+            await (Task)handleMethod.Invoke(eventHandler, [evt, ctx]);
         }
 
         protected void AddMultiEventHandler<TEvent, THandler>(IServiceCollection services) where THandler : class, IHandleLambdaEvent<TEvent>
@@ -108,7 +109,7 @@ namespace NBasis.Lambda
             }
             else
             {
-                throw new ArgumentOutOfRangeException("TEvent", "Unspported multi-event type");
+                throw new ArgumentOutOfRangeException("TEvent", "Unsupported multi-event type");
             }
         }
     }

@@ -10,6 +10,7 @@ namespace NBasis.Lambda.Logging
     public class LambdaLoggerFactory : ILoggerFactory
     {
         public const string LogEnvironmentVariable = "LOG_ENVIRONMENT";
+
         public const string LogLevelVariable = "LOG_MINIMUM_LEVEL";
 
         readonly SerilogLoggerProvider _provider;

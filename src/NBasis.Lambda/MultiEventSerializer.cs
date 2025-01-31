@@ -6,7 +6,7 @@
         {
             if (typeof(T) == typeof(MultiEvent))
             {
-                return (T) ((object) new MultiEvent(requestStream));
+                return (T) (object) new MultiEvent(requestStream);
             }
             return default;
         }

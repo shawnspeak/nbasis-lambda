@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Product>NBasis.Lambda.Serilog</Product>
     <Title>NBasis.Lambda.Serilog</Title>
@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.Core" Version="[2.0,3.0)" />
-    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.0" />
   </ItemGroup>
 
 </Project>

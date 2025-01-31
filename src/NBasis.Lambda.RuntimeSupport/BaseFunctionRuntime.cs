@@ -5,7 +5,9 @@ namespace NBasis.Lambda.RuntimeSupport
     public abstract class BaseFunctionRuntime : IFunctionRuntime
     {
         readonly protected MemoryStream _outputStream = new();
+
         protected LambdaBootstrap _boostrap;
+
         private bool _disposed;
 
         public Task RunAsync(CancellationToken cancellationToken = default)

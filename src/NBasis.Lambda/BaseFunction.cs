@@ -81,7 +81,7 @@ namespace NBasis.Lambda
             Configuration = builder.Build();
 
             // setup services
-            ServiceCollection services = new();
+            ServiceCollection services = [];
             services.AddSingleton(LoggerFactory);
             services.AddSingleton(Configuration);
             services.TryAdd(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(Logger<>)));
